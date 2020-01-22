@@ -1,8 +1,13 @@
- int px = 375;
+Enemy10 e101 = new Enemy10(100,400);
+Enemy20 e201 = new Enemy20(100,300);
+Enemy40 e401 = new Enemy40(100,200);
+
+int px = 375;
  boolean shoot = false;
  int sy = 725;
  int sx;
  int cooldown=0;
+ boolean dead = false;
  
 void setup(){
   size(800,800);  
@@ -13,7 +18,17 @@ void draw(){
   background(0);  
   
   
+  e101.ex ++;
+  e101.update();
+  
+  e201.ex ++;
+  e201.update();
+  
+  e401.ex ++;
+  e401.update();
+  
   //playeren
+  fill(255,255,0);
   rect(px,725,50,35);
   if(keyPressed == true && key=='d' && px<750){
     px = px+5;
@@ -36,4 +51,155 @@ void draw(){
     }
   }
   
+}
+
+class Enemy10 {
+  int ex; 
+  int ey;
+  int esx ;
+  int esy ;
+  int eCooldown = 0;
+  int point =0;
+  boolean eShoot = false;
+  float chance= random(0,180);
+  
+  Enemy10(int eX, int eY){
+  ex =eX;
+  ey =eY;
+  }
+  
+  void update() {
+    fill(0,255,0);
+    rect(ex-25,ey-22,50,45);
+    
+   if(dist(ex,ey,sx,sy)<=20){
+     ex=1000;
+     sx=-1000;
+     point=point+10;
+     print("point: "+point);
+   }
+     chance= random(0,180);
+     if(chance<=1 && eShoot == false){
+       eShoot = true;
+       print("davs");
+       esx = ex;
+       esy = ey;
+       eCooldown = 0;
+     }
+     if(eShoot == true){
+       rect(esx,esy,2,30);
+       esy = esy+5;
+     }
+     eCooldown++;
+     if(eCooldown >= 180){
+       eShoot = false;
+     }
+     if(dist(px+25,725+17,esx,esy)<=20){
+     px=1000;
+     esx=-1000;
+     dead = true;
+     
+   }
+  }
+
+}
+class Enemy20 {
+  int ex; 
+  int ey;
+  int esx ;
+  int esy ;
+  int eCooldown = 0;
+  int point =0;
+  boolean eShoot = false;
+  float chance= random(0,180);
+  
+  Enemy20(int eX, int eY){
+  ex =eX;
+  ey =eY;
+  }
+  
+  void update() {
+    fill(0,0,255);
+    rect(ex-25,ey-22,50,45);
+   
+   if(dist(ex,ey,sx,sy)<=20){
+     ex=1000;
+     sx=-1000;
+     point=point+20;
+     print("point: "+point);
+   }
+     chance= random(0,180);
+     if(chance<=1 && eShoot == false){
+       eShoot = true;
+       print("davs");
+       esx = ex;
+       esy = ey;
+       eCooldown = 0;
+     }
+     if(eShoot == true){
+       rect(esx,esy,2,30);
+       esy = esy+5;
+     }
+     eCooldown++;
+     if(eCooldown >= 180){
+       eShoot = false;
+     }
+     if(dist(px+25,725+17,esx,esy)<=20){
+     px=1000;
+     esx=-1000;
+     dead = true;
+     
+   }
+  }
+
+}
+class Enemy40 {
+  int ex; 
+  int ey;
+  int esx ;
+  int esy ;
+  int eCooldown = 0;
+  int point =0;
+  boolean eShoot = false;
+  float chance= random(0,180);
+  
+  Enemy40(int eX, int eY){
+  ex =eX;
+  ey =eY;
+  }
+  
+  void update() {
+    fill(255,0,0);
+    rect(ex-25,ey-22,50,45);
+   
+   if(dist(ex,ey,sx,sy)<=20){
+     ex=1000;
+     sx=-1000;
+     point=point+40;
+     print("point: "+point);
+   }
+     chance= random(0,180);
+     if(chance<=1 && eShoot == false){
+       eShoot = true;
+       print("davs");
+       esx = ex;
+       esy = ey;
+       eCooldown = 0;
+     }
+     if(eShoot == true){
+       rect(esx,esy,2,30);
+       esy = esy+5;
+     }
+     eCooldown++;
+     if(eCooldown >= 180){
+       eShoot = false;
+     }
+     if(dist(px+25,725+17,esx,esy)<=20){
+     px=1000;
+     esx=-1000;
+     dead = true;
+     
+   }
+  }
+
 }
