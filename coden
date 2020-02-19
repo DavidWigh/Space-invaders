@@ -1,6 +1,45 @@
-Enemy10 e101 = new Enemy10(100,400);
-Enemy20 e201 = new Enemy20(100,300);
-Enemy40 e401 = new Enemy40(100,200);
+Enemy10 e101 = new Enemy10(60,400);
+Enemy10 e102 = new Enemy10(120,400);
+Enemy10 e103 = new Enemy10(180,400);
+Enemy10 e104 = new Enemy10(240,400);
+Enemy10 e105 = new Enemy10(300,400);
+Enemy10 e106 = new Enemy10(360,400);
+Enemy10 e107 = new Enemy10(420,400);
+
+Enemy10 e108 = new Enemy10(60,340);
+Enemy10 e109 = new Enemy10(120,340);
+Enemy10 e1010 = new Enemy10(180,340);
+Enemy10 e1011 = new Enemy10(240,340);
+Enemy10 e1012 = new Enemy10(300,340);
+Enemy10 e1013 = new Enemy10(360,340);
+Enemy10 e1014 = new Enemy10(420,340);
+
+Enemy20 e201 = new Enemy20(60,280);
+Enemy20 e202 = new Enemy20(120,280);
+Enemy20 e203 = new Enemy20(180,280);
+Enemy20 e204 = new Enemy20(240,280);
+Enemy20 e205 = new Enemy20(300,280);
+Enemy20 e206 = new Enemy20(360,280);
+Enemy20 e207 = new Enemy20(420,280);
+
+Enemy20 e208 = new Enemy20(60,220);
+Enemy20 e209 = new Enemy20(120,220);
+Enemy20 e2010 = new Enemy20(180,220);
+Enemy20 e2011 = new Enemy20(240,220);
+Enemy20 e2012 = new Enemy20(300,220);
+Enemy20 e2013 = new Enemy20(360,220);
+Enemy20 e2014 = new Enemy20(420,220);
+
+Enemy40 e401 = new Enemy40(60,160);
+Enemy40 e402 = new Enemy40(120,160);
+Enemy40 e403 = new Enemy40(180,160);
+Enemy40 e404 = new Enemy40(240,160);
+Enemy40 e405 = new Enemy40(300,160);
+Enemy40 e406 = new Enemy40(360,160);
+Enemy40 e407 = new Enemy40(420,160);
+
+boolean eTilH = true;
+int eMoveCount = 0;
 
 int px = 375;
  boolean shoot = false;
@@ -17,15 +56,226 @@ void setup(){
 void draw(){
   background(0);  
   
-  
-  e101.ex ++;
+  //enemy bevægelse
+  //første række
   e101.update();
-  
-  e201.ex ++;
+  e102.update();
+  e103.update();
+  e104.update();
+  e105.update();
+  e106.update();
+  e107.update();
+  //anden række
+  e108.update();
+  e109.update();
+  e1010.update();
+  e1011.update();
+  e1012.update();
+  e1013.update();
+  e1014.update();
+  //tredje række
   e201.update();
-  
-  e401.ex ++;
+  e202.update();
+  e203.update();
+  e204.update();
+  e205.update();
+  e206.update();
+  e207.update();
+  //fjerde række
+  e208.update();
+  e209.update();
+  e2010.update();
+  e2011.update();
+  e2012.update();
+  e2013.update();
+  e2014.update();
+  //femte række
   e401.update();
+  e402.update();
+  e403.update();
+  e404.update();
+  e405.update();
+  e406.update();
+  e407.update();
+  
+  if(eTilH == true && eMoveCount <=320 ){
+    //første række
+    e101.ex ++;
+    e102.ex ++;
+    e103.ex ++;
+    e104.ex ++;
+    e105.ex ++;
+    e106.ex ++;
+    e107.ex ++;
+    //anden række
+    e108.ex ++;
+    e109.ex ++;
+    e1010.ex ++;
+    e1011.ex ++;
+    e1012.ex ++;
+    e1013.ex ++;
+    e1014.ex ++;
+    //tredje række
+    e201.ex ++;
+    e202.ex ++;
+    e203.ex ++;
+    e204.ex ++;
+    e205.ex ++;
+    e206.ex ++;
+    e207.ex ++;
+    //fjrde række
+    e208.ex ++;
+    e209.ex ++;
+    e2010.ex ++;
+    e2011.ex ++;
+    e2012.ex ++;
+    e2013.ex ++;
+    e2014.ex ++;
+    //femte række
+    e401.ex ++;
+    e402.ex ++;
+    e403.ex ++;
+    e404.ex ++;
+    e405.ex ++;
+    e406.ex ++;
+    e407.ex ++;
+    
+    eMoveCount++;
+    if(eMoveCount > 320){
+      eTilH = false;
+      eMoveCount = 0;
+      //første række
+      e101.ey = e101.ey+10;
+      e102.ey = e102.ey+10;
+      e103.ey = e103.ey+10;
+      e104.ey = e104.ey+10;
+      e105.ey = e105.ey+10;
+      e106.ey = e106.ey+10;
+      e107.ey = e107.ey+10;
+      //anden række
+      e108.ey = e108.ey+10;
+      e109.ey = e109.ey+10;
+      e1010.ey = e1010.ey+10;
+      e1011.ey = e1011.ey+10;
+      e1012.ey = e1012.ey+10;
+      e1013.ey = e1013.ey+10;
+      e1014.ey = e1014.ey+10;
+      //tredje række
+      e201.ey = e201.ey+10;
+      e202.ey = e202.ey+10;
+      e203.ey = e203.ey+10;
+      e204.ey = e204.ey+10;
+      e205.ey = e205.ey+10;
+      e206.ey = e206.ey+10;
+      e207.ey = e207.ey+10;
+      //fjrde række
+      e208.ey = e208.ey+10;
+      e209.ey = e209.ey+10;
+      e2010.ey = e2010.ey+10;
+      e2011.ey = e2011.ey+10;
+      e2012.ey = e2012.ey+10;
+      e2013.ey = e2013.ey+10;
+      e2014.ey = e2014.ey+10;
+      //femte række
+      e401.ey = e401.ey+10;
+      e402.ey = e402.ey+10;
+      e403.ey = e403.ey+10;
+      e404.ey = e404.ey+10;
+      e405.ey = e405.ey+10;
+      e406.ey = e406.ey+10;
+      e407.ey = e407.ey+10;
+    }
+  }
+  if(eTilH == false && eMoveCount <=320 ){
+    //første række
+    e101.ex --;
+    e102.ex --;
+    e103.ex --;
+    e104.ex --;
+    e105.ex --;
+    e106.ex --;
+    e107.ex --;
+    //anden række
+    e108.ex --;
+    e109.ex --;
+    e1010.ex --;
+    e1011.ex --;
+    e1012.ex --;
+    e1013.ex --;
+    e1014.ex --;
+    //tredje række
+    e201.ex --;
+    e202.ex --;
+    e203.ex --;
+    e204.ex --;
+    e205.ex --;
+    e206.ex --;
+    e207.ex --;
+    //fjrde række
+    e208.ex --;
+    e209.ex --;
+    e2010.ex --;
+    e2011.ex --;
+    e2012.ex --;
+    e2013.ex --;
+    e2014.ex --;
+    //femte række
+    e401.ex --;
+    e402.ex --;
+    e403.ex --;
+    e404.ex --;
+    e405.ex --;
+    e406.ex --;
+    e407.ex --;
+    
+    eMoveCount++;
+    if(eMoveCount > 320){
+      eTilH = true;
+      eMoveCount = 0;
+      //første række
+      e101.ey = e101.ey+10;
+      e102.ey = e102.ey+10;
+      e103.ey = e103.ey+10;
+      e104.ey = e104.ey+10;
+      e105.ey = e105.ey+10;
+      e106.ey = e106.ey+10;
+      e107.ey = e107.ey+10;
+      //anden række
+      e108.ey = e108.ey+10;
+      e109.ey = e109.ey+10;
+      e1010.ey = e1010.ey+10;
+      e1011.ey = e1011.ey+10;
+      e1012.ey = e1012.ey+10;
+      e1013.ey = e1013.ey+10;
+      e1014.ey = e1014.ey+10;
+      //tredje række
+      e201.ey = e201.ey+10;
+      e202.ey = e202.ey+10;
+      e203.ey = e203.ey+10;
+      e204.ey = e204.ey+10;
+      e205.ey = e205.ey+10;
+      e206.ey = e206.ey+10;
+      e207.ey = e207.ey+10;
+      //fjrde række
+      e208.ey = e208.ey+10;
+      e209.ey = e209.ey+10;
+      e2010.ey = e2010.ey+10;
+      e2011.ey = e2011.ey+10;
+      e2012.ey = e2012.ey+10;
+      e2013.ey = e2013.ey+10;
+      e2014.ey = e2014.ey+10;
+      //femte række
+      e401.ey = e401.ey+10;
+      e402.ey = e402.ey+10;
+      e403.ey = e403.ey+10;
+      e404.ey = e404.ey+10;
+      e405.ey = e405.ey+10;
+      e406.ey = e406.ey+10;
+      e407.ey = e407.ey+10;
+    }
+  }
+  
+  
   
   //playeren
   fill(255,255,0);
@@ -46,7 +296,7 @@ void draw(){
     rect(sx,sy,2,30);
     sy = sy-5;
     cooldown++;
-    if(cooldown >= 180){
+    if(cooldown >= 140){
       shoot = false;
     }
   }
@@ -73,15 +323,14 @@ class Enemy10 {
     rect(ex-25,ey-22,50,45);
     
    if(dist(ex,ey,sx,sy)<=20){
-     ex=1000;
-     sx=-1000;
+     ex=2000;
+     sx=-2000;
      point=point+10;
      print("point: "+point);
    }
      chance= random(0,180);
      if(chance<=1 && eShoot == false){
        eShoot = true;
-       print("davs");
        esx = ex;
        esy = ey;
        eCooldown = 0;
@@ -95,8 +344,8 @@ class Enemy10 {
        eShoot = false;
      }
      if(dist(px+25,725+17,esx,esy)<=20){
-     px=1000;
-     esx=-1000;
+     px=2000;
+     esx=-2000;
      dead = true;
      
    }
@@ -123,15 +372,14 @@ class Enemy20 {
     rect(ex-25,ey-22,50,45);
    
    if(dist(ex,ey,sx,sy)<=20){
-     ex=1000;
-     sx=-1000;
+     ex=2000;
+     sx=-2000;
      point=point+20;
      print("point: "+point);
    }
      chance= random(0,180);
      if(chance<=1 && eShoot == false){
        eShoot = true;
-       print("davs");
        esx = ex;
        esy = ey;
        eCooldown = 0;
@@ -145,8 +393,8 @@ class Enemy20 {
        eShoot = false;
      }
      if(dist(px+25,725+17,esx,esy)<=20){
-     px=1000;
-     esx=-1000;
+     px=2000;
+     esx=-2000;
      dead = true;
      
    }
@@ -173,15 +421,14 @@ class Enemy40 {
     rect(ex-25,ey-22,50,45);
    
    if(dist(ex,ey,sx,sy)<=20){
-     ex=1000;
-     sx=-1000;
+     ex=2000;
+     sx=-2000;
      point=point+40;
      print("point: "+point);
    }
      chance= random(0,180);
      if(chance<=1 && eShoot == false){
        eShoot = true;
-       print("davs");
        esx = ex;
        esy = ey;
        eCooldown = 0;
@@ -195,8 +442,8 @@ class Enemy40 {
        eShoot = false;
      }
      if(dist(px+25,725+17,esx,esy)<=20){
-     px=1000;
-     esx=-1000;
+     px=2000;
+     esx=-2000;
      dead = true;
      
    }
