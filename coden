@@ -303,6 +303,10 @@ void draw(){
   
 }
 
+
+//======================================= Classes =====================================================
+
+
 class Enemy10 {
   int ex; 
   int ey;
@@ -311,6 +315,7 @@ class Enemy10 {
   int eCooldown = 0;
   int point =0;
   boolean eShoot = false;
+  boolean doCount = false;
   float chance= random(0,180);
   
   Enemy10(int eX, int eY){
@@ -322,33 +327,54 @@ class Enemy10 {
     fill(0,255,0);
     rect(ex-25,ey-22,50,45);
     
-   if(dist(ex,ey,sx,sy)<=20){
-     ex=2000;
-     sx=-2000;
-     point=point+10;
-     print("point: "+point);
-   }
-     chance= random(0,180);
-     if(chance<=1 && eShoot == false){
-       eShoot = true;
-       esx = ex;
-       esy = ey;
-       eCooldown = 0;
-     }
-     if(eShoot == true){
-       rect(esx,esy,2,30);
-       esy = esy+5;
-     }
-     eCooldown++;
-     if(eCooldown >= 180){
-       eShoot = false;
-     }
-     if(dist(px+25,725+17,esx,esy)<=20){
-     px=2000;
-     esx=-2000;
-     dead = true;
-     
-   }
+    if (e101.ey>ey && e101.ex >= ex-1 && e101.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e102.ey>ey && e102.ex >= ex-1 && e102.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e103.ey>ey && e103.ex >= ex-1 && e103.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e104.ey>ey && e104.ex >= ex-1 && e104.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e105.ey>ey && e105.ex >= ex-1 && e105.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e106.ey>ey && e106.ex >= ex-1 && e106.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e107.ey>ey && e107.ex >= ex-1 && e107.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    
+    if(dist(ex,ey,sx,sy)<=20){
+      ex=2000;
+      sx=-2000;
+      point=point+10;
+    }
+   
+      if(eShoot == false){
+        eCooldown++;
+        if(eCooldown >= 30){
+          doCount = true;
+          eCooldown = 0;
+        }
+      }
+      if(eShoot == true){
+        eCooldown++;
+        if(eCooldown >= 180){
+          eShoot = false;
+          eCooldown = 0;
+        }
+      }
+        
+      chance= random(0,180);
+      if(chance<=1 && doCount == true ){
+        esx = ex;
+        esy = ey;
+        eShoot = true;
+        doCount = false;
+      }
+  
+      if(eShoot == true){
+        rect(esx,esy,2,30);
+        esy = esy+5;
+      }
+      
+      if(dist(px+25,725+17,esx,esy)<=20){
+      px=2000;
+      esx=-2000;
+      dead = true;
+    }
+  
   }
 
 }
@@ -360,6 +386,7 @@ class Enemy20 {
   int eCooldown = 0;
   int point =0;
   boolean eShoot = false;
+  boolean doCount = false;
   float chance= random(0,180);
   
   Enemy20(int eX, int eY){
@@ -371,36 +398,74 @@ class Enemy20 {
     fill(0,0,255);
     rect(ex-25,ey-22,50,45);
    
-   if(dist(ex,ey,sx,sy)<=20){
-     ex=2000;
-     sx=-2000;
-     point=point+20;
-     print("point: "+point);
-   }
-     chance= random(0,180);
-     if(chance<=1 && eShoot == false){
-       eShoot = true;
-       esx = ex;
-       esy = ey;
-       eCooldown = 0;
-     }
-     if(eShoot == true){
-       rect(esx,esy,2,30);
-       esy = esy+5;
-     }
-     eCooldown++;
-     if(eCooldown >= 180){
-       eShoot = false;
-     }
-     if(dist(px+25,725+17,esx,esy)<=20){
-     px=2000;
-     esx=-2000;
-     dead = true;
-     
-   }
+    if (e101.ey>ey && e101.ex >= ex-1 && e101.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e102.ey>ey && e102.ex >= ex-1 && e102.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e103.ey>ey && e103.ex >= ex-1 && e103.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e104.ey>ey && e104.ex >= ex-1 && e104.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e105.ey>ey && e105.ex >= ex-1 && e105.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e106.ey>ey && e106.ex >= ex-1 && e106.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e107.ey>ey && e107.ex >= ex-1 && e107.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    
+    if (e108.ey>ey && e108.ex >= ex-1 && e108.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e109.ey>ey && e109.ex >= ex-1 && e109.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1010.ey>ey && e1010.ex >= ex-1 && e1010.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1011.ey>ey && e1011.ex >= ex-1 && e1011.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1012.ey>ey && e1012.ex >= ex-1 && e1012.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1013.ey>ey && e1013.ex >= ex-1 && e1013.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1014.ey>ey && e1014.ex >= ex-1 && e1014.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    
+    if (e201.ey>ey && e201.ex >= ex-1 && e201.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e202.ey>ey && e202.ex >= ex-1 && e202.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e203.ey>ey && e203.ex >= ex-1 && e203.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e204.ey>ey && e204.ex >= ex-1 && e204.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e205.ey>ey && e205.ex >= ex-1 && e205.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e206.ey>ey && e206.ex >= ex-1 && e206.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e207.ey>ey && e207.ex >= ex-1 && e207.ex <= ex+1){eShoot = false; eCooldown = 0;}
+   
+    if(dist(ex,ey,sx,sy)<=20){
+      ex=2000;
+      sx=-2000;
+      point=point+10;
+    }
+   
+      if(eShoot == false){
+        eCooldown++;
+        if(eCooldown >= 30){
+          doCount = true;
+          eCooldown = 0;
+        }
+      }
+      if(eShoot == true){
+        eCooldown++;
+        if(eCooldown >= 180){
+          eShoot = false;
+          eCooldown = 0;
+        }
+      }
+        
+      chance= random(0,180);
+      if(chance<=1 && doCount == true ){
+        esx = ex;
+        esy = ey;
+        eShoot = true;
+        doCount = false;
+      }
+  
+      if(eShoot == true){
+        rect(esx,esy,2,30);
+        esy = esy+5;
+      }
+      
+      if(dist(px+25,725+17,esx,esy)<=20){
+      px=2000;
+      esx=-2000;
+      dead = true;
+    }
+  
   }
 
 }
+
 class Enemy40 {
   int ex; 
   int ey;
@@ -409,6 +474,7 @@ class Enemy40 {
   int eCooldown = 0;
   int point =0;
   boolean eShoot = false;
+  boolean doCount = false;
   float chance= random(0,180);
   
   Enemy40(int eX, int eY){
@@ -420,33 +486,78 @@ class Enemy40 {
     fill(255,0,0);
     rect(ex-25,ey-22,50,45);
    
-   if(dist(ex,ey,sx,sy)<=20){
-     ex=2000;
-     sx=-2000;
-     point=point+40;
-     print("point: "+point);
-   }
-     chance= random(0,180);
-     if(chance<=1 && eShoot == false){
-       eShoot = true;
-       esx = ex;
-       esy = ey;
-       eCooldown = 0;
-     }
-     if(eShoot == true){
-       rect(esx,esy,2,30);
-       esy = esy+5;
-     }
-     eCooldown++;
-     if(eCooldown >= 180){
-       eShoot = false;
-     }
-     if(dist(px+25,725+17,esx,esy)<=20){
-     px=2000;
-     esx=-2000;
-     dead = true;
-     
-   }
+    if (e101.ey>ey && e101.ex >= ex-1 && e101.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e102.ey>ey && e102.ex >= ex-1 && e102.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e103.ey>ey && e103.ex >= ex-1 && e103.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e104.ey>ey && e104.ex >= ex-1 && e104.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e105.ey>ey && e105.ex >= ex-1 && e105.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e106.ey>ey && e106.ex >= ex-1 && e106.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e107.ey>ey && e107.ex >= ex-1 && e107.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    
+    if (e108.ey>ey && e108.ex >= ex-1 && e108.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e109.ey>ey && e109.ex >= ex-1 && e109.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1010.ey>ey && e1010.ex >= ex-1 && e1010.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1011.ey>ey && e1011.ex >= ex-1 && e1011.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1012.ey>ey && e1012.ex >= ex-1 && e1012.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1013.ey>ey && e1013.ex >= ex-1 && e1013.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e1014.ey>ey && e1014.ex >= ex-1 && e1014.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    
+    if (e201.ey>ey && e201.ex >= ex-1 && e201.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e202.ey>ey && e202.ex >= ex-1 && e202.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e203.ey>ey && e203.ex >= ex-1 && e203.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e204.ey>ey && e204.ex >= ex-1 && e204.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e205.ey>ey && e205.ex >= ex-1 && e205.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e206.ey>ey && e206.ex >= ex-1 && e206.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e207.ey>ey && e207.ex >= ex-1 && e207.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    
+    if (e208.ey>ey && e208.ex >= ex-1 && e208.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e209.ey>ey && e209.ex >= ex-1 && e209.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e2010.ey>ey && e2010.ex >= ex-1 && e2010.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e2011.ey>ey && e2011.ex >= ex-1 && e2011.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e2012.ey>ey && e2012.ex >= ex-1 && e2012.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e2013.ey>ey && e2013.ex >= ex-1 && e2013.ex <= ex+1){eShoot = false; eCooldown = 0;}
+    if (e2014.ey>ey && e2014.ex >= ex-1 && e2014.ex <= ex+1){eShoot = false; eCooldown = 0;}
+   
+    if(dist(ex,ey,sx,sy)<=20){
+      ex=2000;
+      sx=-2000;
+      point=point+10;
+    }
+   
+      if(eShoot == false){
+        eCooldown++;
+        if(eCooldown >= 30){
+          doCount = true;
+          eCooldown = 0;
+        }
+      }
+      if(eShoot == true){
+        eCooldown++;
+        if(eCooldown >= 180){
+          eShoot = false;
+          eCooldown = 0;
+        }
+      }
+        
+      chance= random(0,180);
+      if(chance<=1 && doCount == true ){
+        esx = ex;
+        esy = ey;
+        eShoot = true;
+        doCount = false;
+      }
+  
+      if(eShoot == true){
+        rect(esx,esy,2,30);
+        esy = esy+5;
+      }
+      
+      if(dist(px+25,725+17,esx,esy)<=20){
+      px=2000;
+      esx=-2000;
+      dead = true;
+    }
+  
   }
 
 }
