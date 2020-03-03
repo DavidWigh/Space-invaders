@@ -294,9 +294,9 @@ void draw(){
   }
   if(shoot == true){
     rect(sx,sy,2,30);
-    sy = sy-5;
+    sy = sy-7;
     cooldown++;
-    if(cooldown >= 140){
+    if(cooldown >= 100){
       shoot = false;
     }
   }
@@ -335,7 +335,7 @@ class Enemy10 {
     if (e106.ey>ey && e106.ex >= ex-1 && e106.ex <= ex+1){eShoot = false; eCooldown = 0;}
     if (e107.ey>ey && e107.ex >= ex-1 && e107.ex <= ex+1){eShoot = false; eCooldown = 0;}
     
-    if(dist(ex,ey,sx,sy)<=20){
+    if(dist(ex,ey,sx,sy)<=25){
       ex=2000;
       sx=-2000;
       point=point+10;
@@ -369,7 +369,7 @@ class Enemy10 {
         esy = esy+5;
       }
       
-      if(dist(px+25,725+17,esx,esy)<=20){
+      if(dist(px+25,725+17,esx,esy)<=25){
       px=2000;
       esx=-2000;
       dead = true;
@@ -422,7 +422,7 @@ class Enemy20 {
     if (e206.ey>ey && e206.ex >= ex-1 && e206.ex <= ex+1){eShoot = false; eCooldown = 0;}
     if (e207.ey>ey && e207.ex >= ex-1 && e207.ex <= ex+1){eShoot = false; eCooldown = 0;}
    
-    if(dist(ex,ey,sx,sy)<=20){
+    if(dist(ex,ey,sx,sy)<=25){
       ex=2000;
       sx=-2000;
       point=point+10;
@@ -456,7 +456,7 @@ class Enemy20 {
         esy = esy+5;
       }
       
-      if(dist(px+25,725+17,esx,esy)<=20){
+      if(dist(px+25,725+17,esx,esy)<=25){
       px=2000;
       esx=-2000;
       dead = true;
@@ -518,7 +518,7 @@ class Enemy40 {
     if (e2013.ey>ey && e2013.ex >= ex-1 && e2013.ex <= ex+1){eShoot = false; eCooldown = 0;}
     if (e2014.ey>ey && e2014.ex >= ex-1 && e2014.ex <= ex+1){eShoot = false; eCooldown = 0;}
    
-    if(dist(ex,ey,sx,sy)<=20){
+    if(dist(ex,ey,sx,sy)<=25){
       ex=2000;
       sx=-2000;
       point=point+10;
@@ -552,7 +552,7 @@ class Enemy40 {
         esy = esy+5;
       }
       
-      if(dist(px+25,725+17,esx,esy)<=20){
+      if(dist(px+25,725+17,esx,esy)<=25){
       px=2000;
       esx=-2000;
       dead = true;
