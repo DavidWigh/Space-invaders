@@ -50,6 +50,8 @@ int px = 375;
  int sx;
  int cooldown=0;
  boolean dead = false;
+ int point = 0;
+ int highscore = 0;
  
 void setup(){
   size(800,800);  
@@ -58,7 +60,15 @@ void setup(){
 
 void draw(){
   background(0);  
-
+  fill(255,255,255);
+  textSize(32);
+  text("Score: "+point,50,50);
+  fill(255,255,255);
+  textSize(32);
+  text("Highscore: "+highscore,320,50);
+  fill(255,255,255);
+  textSize(32);
+  text("Lives: ",630,50);
 
   u1.update();
   
@@ -281,7 +291,51 @@ void draw(){
     }
   }
   
+  point = point + e101.point;
+  point = point + e102.point;
+  point = point + e103.point;
+  point = point + e104.point;
+  point = point + e105.point;
+  point = point + e106.point;
+  point = point + e107.point;
   
+  point = point + e108.point;
+  point = point + e109.point;
+  point = point + e1010.point;
+  point = point + e1011.point;
+  point = point + e1012.point;
+  point = point + e1013.point;
+  point = point + e1014.point;
+       
+  point = point + e201.point;
+  point = point + e202.point;
+  point = point + e203.point;
+  point = point + e204.point;
+  point = point + e205.point;
+  point = point + e206.point;
+  point = point + e207.point;
+  
+  point = point + e208.point;
+  point = point + e209.point;
+  point = point + e2010.point;
+  point = point + e2011.point;
+  point = point + e2012.point;
+  point = point + e2013.point;
+  point = point + e2014.point;
+  
+  point = point + e401.point;
+  point = point + e402.point;
+  point = point + e403.point;
+  point = point + e404.point;
+  point = point + e405.point;
+  point = point + e406.point;
+  point = point + e407.point;
+  
+  point = point + u1.point;
+  
+  if(point>highscore){
+    highscore = point;
+  }
   
   //playeren
   fill(255,255,0);
@@ -307,6 +361,7 @@ void draw(){
     }
   }
   
+
 }
 
 
@@ -322,6 +377,7 @@ class Enemy10 {
   int point =0;
   boolean eShoot = false;
   boolean doCount = false;
+  boolean countOnce = false;
   float chance= random(0,180);
   
   Enemy10(int eX, int eY){
@@ -341,10 +397,18 @@ class Enemy10 {
     if (e106.ey>ey && e106.ex >= ex-1 && e106.ex <= ex+1){eShoot = false; eCooldown = 0;}
     if (e107.ey>ey && e107.ex >= ex-1 && e107.ex <= ex+1){eShoot = false; eCooldown = 0;}
     
+   if (countOnce == true){
+        point = 0;
+      }
+   
     if(dist(ex,ey,sx,sy)<=25){
       ex=2000;
       sx=-2000;
-      point=point+10;
+      
+       if(countOnce == false){
+        point = 10;
+      }
+      countOnce = true;
     }
    
       if(eShoot == false){
@@ -393,6 +457,7 @@ class Enemy20 {
   int point =0;
   boolean eShoot = false;
   boolean doCount = false;
+  boolean countOnce = false;
   float chance= random(0,180);
   
   Enemy20(int eX, int eY){
@@ -428,10 +493,18 @@ class Enemy20 {
     if (e206.ey>ey && e206.ex >= ex-1 && e206.ex <= ex+1){eShoot = false; eCooldown = 0;}
     if (e207.ey>ey && e207.ex >= ex-1 && e207.ex <= ex+1){eShoot = false; eCooldown = 0;}
    
+   if (countOnce == true){
+        point = 0;
+      }
+   
     if(dist(ex,ey,sx,sy)<=25){
       ex=2000;
       sx=-2000;
-      point=point+10;
+      
+       if(countOnce == false){
+        point = 20;
+      }
+      countOnce = true;
     }
    
       if(eShoot == false){
@@ -481,6 +554,7 @@ class Enemy40 {
   int point =0;
   boolean eShoot = false;
   boolean doCount = false;
+  boolean countOnce = false;
   float chance= random(0,180);
   
   Enemy40(int eX, int eY){
@@ -524,10 +598,18 @@ class Enemy40 {
     if (e2013.ey>ey && e2013.ex >= ex-1 && e2013.ex <= ex+1){eShoot = false; eCooldown = 0;}
     if (e2014.ey>ey && e2014.ex >= ex-1 && e2014.ex <= ex+1){eShoot = false; eCooldown = 0;}
    
+    if (countOnce == true){
+        point = 0;
+      }
+   
     if(dist(ex,ey,sx,sy)<=25){
       ex=2000;
       sx=-2000;
-      point=point+10;
+      
+       if(countOnce == false){
+        point = 40;
+      }
+      countOnce = true;
     }
    
       if(eShoot == false){
@@ -571,6 +653,7 @@ class Enemy40 {
   int ux = -1000;
   int uy = 50;
   boolean moveleft = false;
+  boolean countOnce = false;
   int count = 0;
   int point = 0;
   
@@ -594,16 +677,23 @@ class Enemy40 {
         count =0;
       }
     }    
-     if(dist(ux,uy,sx,sy)<=20){
-     ux=2000;
-     sx=-2000;
-     point=point+300;
-     print("point: "+point);
+     if (countOnce == true){
+        point = 0;
+      }
+   
+    if(dist(ux,uy,sx,sy)<=25){
+      ux=2000;
+      sx=-2000;
+      
+       if(countOnce == false){
+        point = 300;
+      }
+      countOnce = true;
      
    }
-    
-    
-    
+   
+   
+   }
+  
   }
 
-}
