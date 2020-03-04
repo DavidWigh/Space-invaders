@@ -1,5 +1,6 @@
+
 Ufo u1 = new Ufo();
- 
+
 Enemy10 e101 = new Enemy10(60,400);
 Enemy10 e102 = new Enemy10(120,400);
 Enemy10 e103 = new Enemy10(180,400);
@@ -57,7 +58,8 @@ void setup(){
 
 void draw(){
   background(0);  
-  
+
+
   u1.update();
   
   //enemy bevægelse
