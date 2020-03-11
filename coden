@@ -337,6 +337,56 @@ void draw(){
     highscore = point;
   }
   
+  if(e101.dead==true&&e102.dead==true&&e103.dead==true&&e104.dead==true&&e105.dead==true&&e106.dead==true&&e107.dead==true&&
+  e108.dead==true&&e109.dead==true&&e1010.dead==true&&e1011.dead==true&&e1012.dead==true&&e1013.dead==true&&e1014.dead==true&&
+  e201.dead==true&&e202.dead==true&&e203.dead==true&&e204.dead==true&&e205.dead==true&&e206.dead==true&&e207.dead==true&&
+  e208.dead==true&&e209.dead==true&&e2010.dead==true&&e2011.dead==true&&e2012.dead==true&&e2013.dead==true&&e2014.dead==true&&
+  e401.dead==true&&e402.dead==true&&e403.dead==true&&e404.dead==true&&e405.dead==true&&e406.dead==true&&e407.dead==true){
+    
+    e101.ex=60; e101.ey=400; e101.dead=false; 
+    e102.ex=120; e102.ey=400; e102.dead=false; 
+    e103.ex=180; e103.ey=400; e103.dead=false; 
+    e104.ex=240; e104.ey=400; e104.dead=false;
+    e105.ex=300; e105.ey=400; e105.dead=false;
+    e106.ex=360; e106.ey=400; e106.dead=false;
+    e107.ex=420; e107.ey=400; e107.dead=false;
+    
+    e108.ex=60; e108.ey=340; e108.dead=false; 
+    e109.ex=120; e109.ey=340; e109.dead=false;
+    e1010.ex=180; e1010.ey=340; e1010.dead=false; 
+    e1011.ex=240; e1011.ey=340; e1011.dead=false; 
+    e1012.ex=300; e1012.ey=340; e1012.dead=false;
+    e1013.ex=360; e1013.ey=340; e1013.dead=false; 
+    e1014.ex=420; e1014.ey=340; e1014.dead=false; 
+    
+    e201.ex=60; e201.ey=280; e201.dead=false; 
+    e202.ex=120; e202.ey=280; e202.dead=false; 
+    e203.ex=180; e203.ey=280; e203.dead=false; 
+    e204.ex=240; e204.ey=280; e204.dead=false; 
+    e205.ex=300; e205.ey=280; e205.dead=false; 
+    e206.ex=360; e206.ey=280; e206.dead=false; 
+    e207.ex=420; e207.ey=280; e207.dead=false; 
+    
+    e208.ex=60; e208.ey=220; e208.dead=false; 
+    e209.ex=120; e209.ey=220; e209.dead=false; 
+    e2010.ex=180; e2010.ey=220; e2010.dead=false; 
+    e2011.ex=240; e2011.ey=220; e2011.dead=false; 
+    e2012.ex=300; e2012.ey=220; e2012.dead=false; 
+    e2013.ex=360; e2013.ey=220; e2013.dead=false; 
+    e2014.ex=420; e2014.ey=220; e2014.dead=false; 
+    
+    e401.ex=60; e401.ey=160; e401.dead=false; 
+    e402.ex=120; e402.ey=160; e402.dead=false; 
+    e403.ex=180; e403.ey=160; e403.dead=false; 
+    e404.ex=240; e404.ey=160; e404.dead=false; 
+    e405.ex=300; e405.ey=160; e405.dead=false; 
+    e406.ex=360; e406.ey=160; e406.dead=false; 
+    e407.ex=420; e407.ey=160; e407.dead=false; 
+    
+    eMoveCount = 0;
+    eTilH = true;
+  }
+  
   //playeren
   fill(255,255,0);
   rect(px,725,50,35);
@@ -378,6 +428,7 @@ class Enemy10 {
   boolean eShoot = false;
   boolean doCount = false;
   boolean countOnce = false;
+  boolean dead = false;
   float chance= random(0,180);
   
   Enemy10(int eX, int eY){
@@ -397,18 +448,19 @@ class Enemy10 {
     if (e106.ey>ey && e106.ex >= ex-1 && e106.ex <= ex+1){eShoot = false; eCooldown = 0;}
     if (e107.ey>ey && e107.ex >= ex-1 && e107.ex <= ex+1){eShoot = false; eCooldown = 0;}
     
-   if (countOnce == true){
+    if (countOnce == true){
         point = 0;
-      }
+        countOnce = false;
+    }
    
     if(dist(ex,ey,sx,sy)<=25){
       ex=2000;
       sx=-2000;
-      
-       if(countOnce == false){
+      dead = true;
+      if(countOnce == false){
         point = 10;
+        countOnce = true;
       }
-      countOnce = true;
     }
    
       if(eShoot == false){
@@ -458,6 +510,7 @@ class Enemy20 {
   boolean eShoot = false;
   boolean doCount = false;
   boolean countOnce = false;
+  boolean dead = false;
   float chance= random(0,180);
   
   Enemy20(int eX, int eY){
@@ -493,18 +546,19 @@ class Enemy20 {
     if (e206.ey>ey && e206.ex >= ex-1 && e206.ex <= ex+1){eShoot = false; eCooldown = 0;}
     if (e207.ey>ey && e207.ex >= ex-1 && e207.ex <= ex+1){eShoot = false; eCooldown = 0;}
    
-   if (countOnce == true){
+    if (countOnce == true){
         point = 0;
-      }
+        countOnce = false;
+    }
    
     if(dist(ex,ey,sx,sy)<=25){
       ex=2000;
       sx=-2000;
-      
-       if(countOnce == false){
+      dead = true;
+      if(countOnce == false){
+        countOnce = true;
         point = 20;
       }
-      countOnce = true;
     }
    
       if(eShoot == false){
@@ -555,6 +609,7 @@ class Enemy40 {
   boolean eShoot = false;
   boolean doCount = false;
   boolean countOnce = false;
+  boolean dead = false;
   float chance= random(0,180);
   
   Enemy40(int eX, int eY){
@@ -600,16 +655,17 @@ class Enemy40 {
    
     if (countOnce == true){
         point = 0;
-      }
+        countOnce =false;
+    }
    
     if(dist(ex,ey,sx,sy)<=25){
       ex=2000;
       sx=-2000;
-      
-       if(countOnce == false){
+      dead = true;
+      if(countOnce == false){
         point = 40;
+        countOnce = true;
       }
-      countOnce = true;
     }
    
       if(eShoot == false){
@@ -653,7 +709,7 @@ class Enemy40 {
   int ux = -1000;
   int uy = 50;
   boolean moveleft = false;
-  boolean countOnce = false;
+  boolean countOnce = true;
   int count = 0;
   int point = 0;
   
@@ -669,6 +725,7 @@ class Enemy40 {
         count = 0;
       }
     }
+    
     if (moveleft == true){
       ux = ux -2;
       count ++;
@@ -677,23 +734,28 @@ class Enemy40 {
         count =0;
       }
     }    
+    
      if (countOnce == true){
         point = 0;
       }
    
     if(dist(ux,uy,sx,sy)<=25){
-      ux=2000;
-      sx=-2000;
-      
-       if(countOnce == false){
-        point = 300;
+      if(moveleft == false){
+        moveleft = true;
+        count = 0;
+        ux = 1800;
+      }else if(moveleft == true){
+        moveleft = false;
+        count = 0;
+        ux = -1000;
       }
-      countOnce = true;
-     
-   }
-   
+      countOnce = false;
+    }
+    if(countOnce == false){
+       point = 300;
+      }
+      countOnce = true; 
    
    }
   
   }
-
