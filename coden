@@ -148,18 +148,6 @@ void draw(){
     textSize(32);
     text("Lives: "+lives,630,50);
    
-    while(pDead == true){
-      background(0);
-      fill(255,0,0);  
-      textSize(46);
-      text("Game over" ,285,400);
-      
-      if(mousePressed == true){
-        pDead = false;
-        lives = 3;
-      }
-      
-    }
   
     u1.update();
     
