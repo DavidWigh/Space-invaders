@@ -49,11 +49,12 @@ int px = 375;
  int sy = 725;
  int sx;
  int cooldown=0;
- boolean dead = false;
+ boolean pDead = false;
  int point = 0;
  int highscore = 0;
+ int Gameover;
  int lives = 3;
- 
+ boolean startscreen = true;
  
 void setup(){
   size(800,800);  
@@ -61,362 +62,451 @@ void setup(){
 }
 
 void draw(){
-  background(0);  
-  fill(255,255,255);
-  textSize(32);
-  text("Score: "+point,50,50);
-  fill(255,255,255);
-  textSize(32);
-  text("Highscore: "+highscore,320,50);
-  fill(255,255,255);
-  textSize(32);
-  text("Lives: "+lives,630,50);
-
-  u1.update();
+  background(0); 
   
-  //enemy bevægelse
-  //første række
-  e101.update();
-  e102.update();
-  e103.update();
-  e104.update();
-  e105.update();
-  e106.update();
-  e107.update();
-  //anden række
-  e108.update();
-  e109.update();
-  e1010.update();
-  e1011.update();
-  e1012.update();
-  e1013.update();
-  e1014.update();
-  //tredje række
-  e201.update();
-  e202.update();
-  e203.update();
-  e204.update();
-  e205.update();
-  e206.update();
-  e207.update();
-  //fjerde række
-  e208.update();
-  e209.update();
-  e2010.update();
-  e2011.update();
-  e2012.update();
-  e2013.update();
-  e2014.update();
-  //femte række
-  e401.update();
-  e402.update();
-  e403.update();
-  e404.update();
-  e405.update();
-  e406.update();
-  e407.update();
-  
-  if(eTilH == true && eMoveCount <=320 ){
-    //første række
-    e101.ex ++;
-    e102.ex ++;
-    e103.ex ++;
-    e104.ex ++;
-    e105.ex ++;
-    e106.ex ++;
-    e107.ex ++;
-    //anden række
-    e108.ex ++;
-    e109.ex ++;
-    e1010.ex ++;
-    e1011.ex ++;
-    e1012.ex ++;
-    e1013.ex ++;
-    e1014.ex ++;
-    //tredje række
-    e201.ex ++;
-    e202.ex ++;
-    e203.ex ++;
-    e204.ex ++;
-    e205.ex ++;
-    e206.ex ++;
-    e207.ex ++;
-    //fjrde række
-    e208.ex ++;
-    e209.ex ++;
-    e2010.ex ++;
-    e2011.ex ++;
-    e2012.ex ++;
-    e2013.ex ++;
-    e2014.ex ++;
-    //femte række
-    e401.ex ++;
-    e402.ex ++;
-    e403.ex ++;
-    e404.ex ++;
-    e405.ex ++;
-    e406.ex ++;
-    e407.ex ++;
+  if(pDead == true){
+    fill(255,0,0);  
+    textSize(46);
+    text("Game over" ,285,350);
+    fill(255,255,255);  
+    textSize(32);
+    text("Highscore: "+highscore ,410,400);
+    fill(255,255,255);
+    textSize(32);
+    text("Score: "+point ,200,400);
     
-    eMoveCount++;
-    if(eMoveCount > 320){
-      eTilH = false;
-      eMoveCount = 0;
-      //første række
-      e101.ey = e101.ey+10;
-      e102.ey = e102.ey+10;
-      e103.ey = e103.ey+10;
-      e104.ey = e104.ey+10;
-      e105.ey = e105.ey+10;
-      e106.ey = e106.ey+10;
-      e107.ey = e107.ey+10;
-      //anden række
-      e108.ey = e108.ey+10;
-      e109.ey = e109.ey+10;
-      e1010.ey = e1010.ey+10;
-      e1011.ey = e1011.ey+10;
-      e1012.ey = e1012.ey+10;
-      e1013.ey = e1013.ey+10;
-      e1014.ey = e1014.ey+10;
-      //tredje række
-      e201.ey = e201.ey+10;
-      e202.ey = e202.ey+10;
-      e203.ey = e203.ey+10;
-      e204.ey = e204.ey+10;
-      e205.ey = e205.ey+10;
-      e206.ey = e206.ey+10;
-      e207.ey = e207.ey+10;
-      //fjrde række
-      e208.ey = e208.ey+10;
-      e209.ey = e209.ey+10;
-      e2010.ey = e2010.ey+10;
-      e2011.ey = e2011.ey+10;
-      e2012.ey = e2012.ey+10;
-      e2013.ey = e2013.ey+10;
-      e2014.ey = e2014.ey+10;
-      //femte række
-      e401.ey = e401.ey+10;
-      e402.ey = e402.ey+10;
-      e403.ey = e403.ey+10;
-      e404.ey = e404.ey+10;
-      e405.ey = e405.ey+10;
-      e406.ey = e406.ey+10;
-      e407.ey = e407.ey+10;
+    if(mousePressed == true){
+      pDead = false;
+      startscreen = true;
+      mouseX = 100;
+      mouseY = 100;
     }
-  }
-  if(eTilH == false && eMoveCount <=320 ){
-    //første række
-    e101.ex --;
-    e102.ex --;
-    e103.ex --;
-    e104.ex --;
-    e105.ex --;
-    e106.ex --;
-    e107.ex --;
-    //anden række
-    e108.ex --;
-    e109.ex --;
-    e1010.ex --;
-    e1011.ex --;
-    e1012.ex --;
-    e1013.ex --;
-    e1014.ex --;
-    //tredje række
-    e201.ex --;
-    e202.ex --;
-    e203.ex --;
-    e204.ex --;
-    e205.ex --;
-    e206.ex --;
-    e207.ex --;
-    //fjrde række
-    e208.ex --;
-    e209.ex --;
-    e2010.ex --;
-    e2011.ex --;
-    e2012.ex --;
-    e2013.ex --;
-    e2014.ex --;
-    //femte række
-    e401.ex --;
-    e402.ex --;
-    e403.ex --;
-    e404.ex --;
-    e405.ex --;
-    e406.ex --;
-    e407.ex --;
     
-    eMoveCount++;
-    if(eMoveCount > 320){
+  }
+  
+  if (startscreen == true){
+    fill(255,255,255);  
+    textSize(46);
+    text("Space Invaders" ,240,300);
+    fill(255,255,255);  
+    textSize(32);
+    text("Highscore: "+highscore ,300,350);
+    fill(255,255,255);
+    rect(270,380,250,70);
+    fill(0);  
+    textSize(42);
+    text("Start",345,430);
+    fill(0,255,0);
+    rect(265,470,50,45);
+    fill(255);  
+    textSize(32);
+    text("10",270,550);
+    fill(0,0,255);
+    rect(335,470,50,45);
+    fill(255);  
+    textSize(32);
+    text("20",340,550);
+    fill(255,0,0);
+    rect(405,470,50,45);
+    fill(255);  
+    textSize(32);
+    text("40",410,550);
+    fill(255,0,255);
+    rect(475,470,50,45);
+    fill(255);  
+    textSize(32);
+    text("300",470,550);
+    
+    if(mousePressed == true && mouseX < 520 && mouseX > 270 && mouseY < 450 && mouseY > 380){
+      startscreen = false;
+      lives = 3;
+      px = 375;
+      point = 0;
+      
+      e101.dead=true; e102.dead=true; e103.dead=true; e104.dead=true; e105.dead=true; e106.dead=true; e107.dead=true;
+      e108.dead=true; e109.dead=true; e1010.dead=true; e1011.dead=true; e1012.dead=true; e1013.dead=true; e1014.dead=true;
+      e201.dead=true; e202.dead=true; e203.dead=true; e204.dead=true; e205.dead=true; e206.dead=true; e207.dead=true;
+      e208.dead=true; e209.dead=true; e2010.dead=true; e2011.dead=true; e2012.dead=true; e2013.dead=true; e2014.dead=true;
+      e401.dead=true; e402.dead=true; e403.dead=true; e404.dead=true; e405.dead=true; e406.dead=true; e407.dead=true;
+      
+      u1.moveleft = false;
+      u1.count = 0;
+      u1.ux = -1000;
+    }  
+    
+  }
+  
+  if(pDead == false && startscreen == false){
+    
+    fill(255,255,255);
+    textSize(32);
+    text("Score: "+point,50,50);
+    fill(255,255,255);
+    textSize(32);
+    text("Highscore: "+highscore,320,50);
+    fill(255,255,255);
+    textSize(32);
+    text("Lives: "+lives,630,50);
+   
+    while(pDead == true){
+      background(0);
+      fill(255,0,0);  
+      textSize(46);
+      text("Game over" ,285,400);
+      
+      if(mousePressed == true){
+        pDead = false;
+        lives = 3;
+      }
+      
+    }
+  
+    u1.update();
+    
+    //enemy bevægelse
+    //første række
+    e101.update();
+    e102.update();
+    e103.update();
+    e104.update();
+    e105.update();
+    e106.update();
+    e107.update();
+    //anden række
+    e108.update();
+    e109.update();
+    e1010.update();
+    e1011.update();
+    e1012.update();
+    e1013.update();
+    e1014.update();
+    //tredje række
+    e201.update();
+    e202.update();
+    e203.update();
+    e204.update();
+    e205.update();
+    e206.update();
+    e207.update();
+    //fjerde række
+    e208.update();
+    e209.update();
+    e2010.update();
+    e2011.update();
+    e2012.update();
+    e2013.update();
+    e2014.update();
+    //femte række
+    e401.update();
+    e402.update();
+    e403.update();
+    e404.update();
+    e405.update();
+    e406.update();
+    e407.update();
+    
+    if(eTilH == true && eMoveCount <=320 ){
+      //første række
+      e101.ex ++;
+      e102.ex ++;
+      e103.ex ++;
+      e104.ex ++;
+      e105.ex ++;
+      e106.ex ++;
+      e107.ex ++;
+      //anden række
+      e108.ex ++;
+      e109.ex ++;
+      e1010.ex ++;
+      e1011.ex ++;
+      e1012.ex ++;
+      e1013.ex ++;
+      e1014.ex ++;
+      //tredje række
+      e201.ex ++;
+      e202.ex ++;
+      e203.ex ++;
+      e204.ex ++;
+      e205.ex ++;
+      e206.ex ++;
+      e207.ex ++;
+      //fjrde række
+      e208.ex ++;
+      e209.ex ++;
+      e2010.ex ++;
+      e2011.ex ++;
+      e2012.ex ++;
+      e2013.ex ++;
+      e2014.ex ++;
+      //femte række
+      e401.ex ++;
+      e402.ex ++;
+      e403.ex ++;
+      e404.ex ++;
+      e405.ex ++;
+      e406.ex ++;
+      e407.ex ++;
+      
+      eMoveCount++;
+      if(eMoveCount > 320){
+        eTilH = false;
+        eMoveCount = 0;
+        //første række
+        e101.ey = e101.ey+10;
+        e102.ey = e102.ey+10;
+        e103.ey = e103.ey+10;
+        e104.ey = e104.ey+10;
+        e105.ey = e105.ey+10;
+        e106.ey = e106.ey+10;
+        e107.ey = e107.ey+10;
+        //anden række
+        e108.ey = e108.ey+10;
+        e109.ey = e109.ey+10;
+        e1010.ey = e1010.ey+10;
+        e1011.ey = e1011.ey+10;
+        e1012.ey = e1012.ey+10;
+        e1013.ey = e1013.ey+10;
+        e1014.ey = e1014.ey+10;
+        //tredje række
+        e201.ey = e201.ey+10;
+        e202.ey = e202.ey+10;
+        e203.ey = e203.ey+10;
+        e204.ey = e204.ey+10;
+        e205.ey = e205.ey+10;
+        e206.ey = e206.ey+10;
+        e207.ey = e207.ey+10;
+        //fjrde række
+        e208.ey = e208.ey+10;
+        e209.ey = e209.ey+10;
+        e2010.ey = e2010.ey+10;
+        e2011.ey = e2011.ey+10;
+        e2012.ey = e2012.ey+10;
+        e2013.ey = e2013.ey+10;
+        e2014.ey = e2014.ey+10;
+        //femte række
+        e401.ey = e401.ey+10;
+        e402.ey = e402.ey+10;
+        e403.ey = e403.ey+10;
+        e404.ey = e404.ey+10;
+        e405.ey = e405.ey+10;
+        e406.ey = e406.ey+10;
+        e407.ey = e407.ey+10;
+      }
+    }
+    if(eTilH == false && eMoveCount <=320 ){
+      //første række
+      e101.ex --;
+      e102.ex --;
+      e103.ex --;
+      e104.ex --;
+      e105.ex --;
+      e106.ex --;
+      e107.ex --;
+      //anden række
+      e108.ex --;
+      e109.ex --;
+      e1010.ex --;
+      e1011.ex --;
+      e1012.ex --;
+      e1013.ex --;
+      e1014.ex --;
+      //tredje række
+      e201.ex --;
+      e202.ex --;
+      e203.ex --;
+      e204.ex --;
+      e205.ex --;
+      e206.ex --;
+      e207.ex --;
+      //fjrde række
+      e208.ex --;
+      e209.ex --;
+      e2010.ex --;
+      e2011.ex --;
+      e2012.ex --;
+      e2013.ex --;
+      e2014.ex --;
+      //femte række
+      e401.ex --;
+      e402.ex --;
+      e403.ex --;
+      e404.ex --;
+      e405.ex --;
+      e406.ex --;
+      e407.ex --;
+      
+      eMoveCount++;
+      if(eMoveCount > 320){
+        eTilH = true;
+        eMoveCount = 0;
+        //første række
+        e101.ey = e101.ey+10;
+        e102.ey = e102.ey+10;
+        e103.ey = e103.ey+10;
+        e104.ey = e104.ey+10;
+        e105.ey = e105.ey+10;
+        e106.ey = e106.ey+10;
+        e107.ey = e107.ey+10;
+        //anden række
+        e108.ey = e108.ey+10;
+        e109.ey = e109.ey+10;
+        e1010.ey = e1010.ey+10;
+        e1011.ey = e1011.ey+10;
+        e1012.ey = e1012.ey+10;
+        e1013.ey = e1013.ey+10;
+        e1014.ey = e1014.ey+10;
+        //tredje række
+        e201.ey = e201.ey+10;
+        e202.ey = e202.ey+10;
+        e203.ey = e203.ey+10;
+        e204.ey = e204.ey+10;
+        e205.ey = e205.ey+10;
+        e206.ey = e206.ey+10;
+        e207.ey = e207.ey+10;
+        //fjrde række
+        e208.ey = e208.ey+10;
+        e209.ey = e209.ey+10;
+        e2010.ey = e2010.ey+10;
+        e2011.ey = e2011.ey+10;
+        e2012.ey = e2012.ey+10;
+        e2013.ey = e2013.ey+10;
+        e2014.ey = e2014.ey+10;
+        //femte række
+        e401.ey = e401.ey+10;
+        e402.ey = e402.ey+10;
+        e403.ey = e403.ey+10;
+        e404.ey = e404.ey+10;
+        e405.ey = e405.ey+10;
+        e406.ey = e406.ey+10;
+        e407.ey = e407.ey+10;
+      }
+    }
+    
+    point = point + e101.point;
+    point = point + e102.point;
+    point = point + e103.point;
+    point = point + e104.point;
+    point = point + e105.point;
+    point = point + e106.point;
+    point = point + e107.point;
+    
+    point = point + e108.point;
+    point = point + e109.point;
+    point = point + e1010.point;
+    point = point + e1011.point;
+    point = point + e1012.point;
+    point = point + e1013.point;
+    point = point + e1014.point;
+         
+    point = point + e201.point;
+    point = point + e202.point;
+    point = point + e203.point;
+    point = point + e204.point;
+    point = point + e205.point;
+    point = point + e206.point;
+    point = point + e207.point;
+    
+    point = point + e208.point;
+    point = point + e209.point;
+    point = point + e2010.point;
+    point = point + e2011.point;
+    point = point + e2012.point;
+    point = point + e2013.point;
+    point = point + e2014.point;
+    
+    point = point + e401.point;
+    point = point + e402.point;
+    point = point + e403.point;
+    point = point + e404.point;
+    point = point + e405.point;
+    point = point + e406.point;
+    point = point + e407.point;
+    
+    point = point + u1.point;
+    
+    if(point>highscore){
+      highscore = point;
+    }
+    
+    if(e101.dead==true&&e102.dead==true&&e103.dead==true&&e104.dead==true&&e105.dead==true&&e106.dead==true&&e107.dead==true&&
+    e108.dead==true&&e109.dead==true&&e1010.dead==true&&e1011.dead==true&&e1012.dead==true&&e1013.dead==true&&e1014.dead==true&&
+    e201.dead==true&&e202.dead==true&&e203.dead==true&&e204.dead==true&&e205.dead==true&&e206.dead==true&&e207.dead==true&&
+    e208.dead==true&&e209.dead==true&&e2010.dead==true&&e2011.dead==true&&e2012.dead==true&&e2013.dead==true&&e2014.dead==true&&
+    e401.dead==true&&e402.dead==true&&e403.dead==true&&e404.dead==true&&e405.dead==true&&e406.dead==true&&e407.dead==true){
+      
+      e101.ex=60; e101.ey=400; e101.dead=false; 
+      e102.ex=120; e102.ey=400; e102.dead=false; 
+      e103.ex=180; e103.ey=400; e103.dead=false; 
+      e104.ex=240; e104.ey=400; e104.dead=false;
+      e105.ex=300; e105.ey=400; e105.dead=false;
+      e106.ex=360; e106.ey=400; e106.dead=false;
+      e107.ex=420; e107.ey=400; e107.dead=false;
+      
+      e108.ex=60; e108.ey=340; e108.dead=false; 
+      e109.ex=120; e109.ey=340; e109.dead=false;
+      e1010.ex=180; e1010.ey=340; e1010.dead=false; 
+      e1011.ex=240; e1011.ey=340; e1011.dead=false; 
+      e1012.ex=300; e1012.ey=340; e1012.dead=false;
+      e1013.ex=360; e1013.ey=340; e1013.dead=false; 
+      e1014.ex=420; e1014.ey=340; e1014.dead=false; 
+      
+      e201.ex=60; e201.ey=280; e201.dead=false; 
+      e202.ex=120; e202.ey=280; e202.dead=false; 
+      e203.ex=180; e203.ey=280; e203.dead=false; 
+      e204.ex=240; e204.ey=280; e204.dead=false; 
+      e205.ex=300; e205.ey=280; e205.dead=false; 
+      e206.ex=360; e206.ey=280; e206.dead=false; 
+      e207.ex=420; e207.ey=280; e207.dead=false; 
+      
+      e208.ex=60; e208.ey=220; e208.dead=false; 
+      e209.ex=120; e209.ey=220; e209.dead=false; 
+      e2010.ex=180; e2010.ey=220; e2010.dead=false; 
+      e2011.ex=240; e2011.ey=220; e2011.dead=false; 
+      e2012.ex=300; e2012.ey=220; e2012.dead=false; 
+      e2013.ex=360; e2013.ey=220; e2013.dead=false; 
+      e2014.ex=420; e2014.ey=220; e2014.dead=false; 
+      
+      e401.ex=60; e401.ey=160; e401.dead=false; 
+      e402.ex=120; e402.ey=160; e402.dead=false; 
+      e403.ex=180; e403.ey=160; e403.dead=false; 
+      e404.ex=240; e404.ey=160; e404.dead=false; 
+      e405.ex=300; e405.ey=160; e405.dead=false; 
+      e406.ex=360; e406.ey=160; e406.dead=false; 
+      e407.ex=420; e407.ey=160; e407.dead=false; 
+      
+      eMoveCount = 0;
       eTilH = true;
-      eMoveCount = 0;
-      //første række
-      e101.ey = e101.ey+10;
-      e102.ey = e102.ey+10;
-      e103.ey = e103.ey+10;
-      e104.ey = e104.ey+10;
-      e105.ey = e105.ey+10;
-      e106.ey = e106.ey+10;
-      e107.ey = e107.ey+10;
-      //anden række
-      e108.ey = e108.ey+10;
-      e109.ey = e109.ey+10;
-      e1010.ey = e1010.ey+10;
-      e1011.ey = e1011.ey+10;
-      e1012.ey = e1012.ey+10;
-      e1013.ey = e1013.ey+10;
-      e1014.ey = e1014.ey+10;
-      //tredje række
-      e201.ey = e201.ey+10;
-      e202.ey = e202.ey+10;
-      e203.ey = e203.ey+10;
-      e204.ey = e204.ey+10;
-      e205.ey = e205.ey+10;
-      e206.ey = e206.ey+10;
-      e207.ey = e207.ey+10;
-      //fjrde række
-      e208.ey = e208.ey+10;
-      e209.ey = e209.ey+10;
-      e2010.ey = e2010.ey+10;
-      e2011.ey = e2011.ey+10;
-      e2012.ey = e2012.ey+10;
-      e2013.ey = e2013.ey+10;
-      e2014.ey = e2014.ey+10;
-      //femte række
-      e401.ey = e401.ey+10;
-      e402.ey = e402.ey+10;
-      e403.ey = e403.ey+10;
-      e404.ey = e404.ey+10;
-      e405.ey = e405.ey+10;
-      e406.ey = e406.ey+10;
-      e407.ey = e407.ey+10;
     }
-  }
-  
-  point = point + e101.point;
-  point = point + e102.point;
-  point = point + e103.point;
-  point = point + e104.point;
-  point = point + e105.point;
-  point = point + e106.point;
-  point = point + e107.point;
-  
-  point = point + e108.point;
-  point = point + e109.point;
-  point = point + e1010.point;
-  point = point + e1011.point;
-  point = point + e1012.point;
-  point = point + e1013.point;
-  point = point + e1014.point;
-       
-  point = point + e201.point;
-  point = point + e202.point;
-  point = point + e203.point;
-  point = point + e204.point;
-  point = point + e205.point;
-  point = point + e206.point;
-  point = point + e207.point;
-  
-  point = point + e208.point;
-  point = point + e209.point;
-  point = point + e2010.point;
-  point = point + e2011.point;
-  point = point + e2012.point;
-  point = point + e2013.point;
-  point = point + e2014.point;
-  
-  point = point + e401.point;
-  point = point + e402.point;
-  point = point + e403.point;
-  point = point + e404.point;
-  point = point + e405.point;
-  point = point + e406.point;
-  point = point + e407.point;
-  
-  point = point + u1.point;
-  
-  if(point>highscore){
-    highscore = point;
-  }
-  
-  if(e101.dead==true&&e102.dead==true&&e103.dead==true&&e104.dead==true&&e105.dead==true&&e106.dead==true&&e107.dead==true&&
-  e108.dead==true&&e109.dead==true&&e1010.dead==true&&e1011.dead==true&&e1012.dead==true&&e1013.dead==true&&e1014.dead==true&&
-  e201.dead==true&&e202.dead==true&&e203.dead==true&&e204.dead==true&&e205.dead==true&&e206.dead==true&&e207.dead==true&&
-  e208.dead==true&&e209.dead==true&&e2010.dead==true&&e2011.dead==true&&e2012.dead==true&&e2013.dead==true&&e2014.dead==true&&
-  e401.dead==true&&e402.dead==true&&e403.dead==true&&e404.dead==true&&e405.dead==true&&e406.dead==true&&e407.dead==true){
     
-    e101.ex=60; e101.ey=400; e101.dead=false; 
-    e102.ex=120; e102.ey=400; e102.dead=false; 
-    e103.ex=180; e103.ey=400; e103.dead=false; 
-    e104.ex=240; e104.ey=400; e104.dead=false;
-    e105.ex=300; e105.ey=400; e105.dead=false;
-    e106.ex=360; e106.ey=400; e106.dead=false;
-    e107.ex=420; e107.ey=400; e107.dead=false;
-    
-    e108.ex=60; e108.ey=340; e108.dead=false; 
-    e109.ex=120; e109.ey=340; e109.dead=false;
-    e1010.ex=180; e1010.ey=340; e1010.dead=false; 
-    e1011.ex=240; e1011.ey=340; e1011.dead=false; 
-    e1012.ex=300; e1012.ey=340; e1012.dead=false;
-    e1013.ex=360; e1013.ey=340; e1013.dead=false; 
-    e1014.ex=420; e1014.ey=340; e1014.dead=false; 
-    
-    e201.ex=60; e201.ey=280; e201.dead=false; 
-    e202.ex=120; e202.ey=280; e202.dead=false; 
-    e203.ex=180; e203.ey=280; e203.dead=false; 
-    e204.ex=240; e204.ey=280; e204.dead=false; 
-    e205.ex=300; e205.ey=280; e205.dead=false; 
-    e206.ex=360; e206.ey=280; e206.dead=false; 
-    e207.ex=420; e207.ey=280; e207.dead=false; 
-    
-    e208.ex=60; e208.ey=220; e208.dead=false; 
-    e209.ex=120; e209.ey=220; e209.dead=false; 
-    e2010.ex=180; e2010.ey=220; e2010.dead=false; 
-    e2011.ex=240; e2011.ey=220; e2011.dead=false; 
-    e2012.ex=300; e2012.ey=220; e2012.dead=false; 
-    e2013.ex=360; e2013.ey=220; e2013.dead=false; 
-    e2014.ex=420; e2014.ey=220; e2014.dead=false; 
-    
-    e401.ex=60; e401.ey=160; e401.dead=false; 
-    e402.ex=120; e402.ey=160; e402.dead=false; 
-    e403.ex=180; e403.ey=160; e403.dead=false; 
-    e404.ex=240; e404.ey=160; e404.dead=false; 
-    e405.ex=300; e405.ey=160; e405.dead=false; 
-    e406.ex=360; e406.ey=160; e406.dead=false; 
-    e407.ex=420; e407.ey=160; e407.dead=false; 
-    
-    eMoveCount = 0;
-    eTilH = true;
-  }
-  
-  //playeren
-  fill(255,255,0);
-  rect(px,725,50,35);
-  if(keyPressed == true && key=='d' && px<750){
-    px = px+5;
-  }
-  if(keyPressed == true && key=='a' && px>0){
-    px = px-5;
-  }
-  if(keyPressed == true && key=='w'&& shoot == false){
-    shoot = true;
-    cooldown = 0;
-    sx = px+24;
-    sy = 725;
-  }
-  if(shoot == true){
-    rect(sx,sy,2,30);
-    sy = sy-7;
-    cooldown++;
-    if(cooldown >= 100){
-      shoot = false;
+    //playeren
+    fill(255,255,0);
+    rect(px,725,50,35);
+    if(keyPressed == true && key=='d' && px<750){
+      px = px+5;
     }
-  }
+    if(keyPressed == true && key=='a' && px>0){
+      px = px-5;
+    }
+    if(keyPressed == true && key=='w'&& shoot == false){
+      shoot = true;
+      cooldown = 0;
+      sx = px+24;
+      sy = 725;
+    }
+    if(shoot == true){
+      rect(sx,sy,2,30);
+      sy = sy-7;
+      cooldown++;
+      if(cooldown >= 100){
+        shoot = false;
+      }
+    }
+    
   
+  }
+
 
 }
-
-
 //======================================= Classes =====================================================
 
 
@@ -500,6 +590,7 @@ class Enemy10 {
           lives = lives - 1;
         }else{
           px=2000;
+          pDead = true;
         }
       }
   
@@ -602,6 +693,7 @@ class Enemy20 {
           lives = lives - 1;
         }else{
           px=2000;
+          pDead = true;
         }
       }
   
@@ -713,6 +805,7 @@ class Enemy40 {
           lives = lives - 1;
         }else{
           px=2000;
+          pDead = true;
         }
       }
   
