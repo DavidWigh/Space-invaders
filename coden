@@ -1,3 +1,7 @@
+Barriere b1 = new Barriere(160);
+Barriere b2 = new Barriere(320);
+Barriere b3 = new Barriere(480);
+Barriere b4 = new Barriere(640);
 
 Ufo u1 = new Ufo();
 
@@ -132,6 +136,15 @@ void draw(){
       u1.moveleft = false;
       u1.count = 0;
       u1.ux = -1000;
+      
+      b1.bState = 50;
+      b2.bState = 50;
+      b3.bState = 50;
+      b4.bState = 50;
+      b1.bx = 160;
+      b2.bx = 320;
+      b3.bx = 480;
+      b4.bx = 640;
     }  
     
   }
@@ -148,7 +161,12 @@ void draw(){
     textSize(32);
     text("Lives: "+lives,630,50);
    
-  
+    
+    b1.update();
+    b2.update();
+    b3.update();
+    b4.update();
+    
     u1.update();
     
     //enemy bevægelse
@@ -581,6 +599,36 @@ class Enemy10 {
           pDead = true;
         }
       }
+      
+      if(esy>620 && esx<b1.bx+35 && esx>b1.bx-35){
+        b1.bState --;
+        esx=-2000;
+      }
+      if(esy>620 && esx<b2.bx+35 && esx>b2.bx-35){
+        b2.bState --;
+        esx=-2000;
+      }
+      if(esy>620 && esx<b3.bx+35 && esx>b3.bx-35){
+        b3.bState --;
+        esx=-2000;
+      }
+      if(esy>620 && esx<b4.bx+35 && esx>b4.bx-35){
+        b4.bState --;
+        esx=-2000;
+      }
+      
+      if(ey+30>b1.by && ex<b1.bx+35 && ex>b1.bx-85){
+        b1.bState --;
+      }
+      if(ey+30>b2.by && ex<b2.bx+35 && ex>b2.bx-85){
+        b2.bState --;
+      }
+      if(ey+30>b3.by && ex<b3.bx+35 && ex>b3.bx-85){
+        b3.bState --;
+      }
+      if(ey+30>b4.by && ex<b4.bx+35 && ex>b4.bx-85){
+        b4.bState --;
+      }
   
   }
 
@@ -683,6 +731,35 @@ class Enemy20 {
           px=2000;
           pDead = true;
         }
+      }
+      if(esy>620 && esx<b1.bx+35 && esx>b1.bx-35){
+        b1.bState --;
+        esx=-2000;
+      }
+      if(esy>620 && esx<b2.bx+35 && esx>b2.bx-35){
+        b2.bState --;
+        esx=-2000;
+      }
+      if(esy>620 && esx<b3.bx+35 && esx>b3.bx-35){
+        b3.bState --;
+        esx=-2000;
+      }
+      if(esy>620 && esx<b4.bx+35 && esx>b4.bx-35){
+        b4.bState --;
+        esx=-2000;
+      }
+      
+      if(ey+30>b1.by && ex<b1.bx+35 && ex>b1.bx-85){
+        b1.bState --;
+      }
+      if(ey+30>b2.by && ex<b2.bx+35 && ex>b2.bx-85){
+        b2.bState --;
+      }
+      if(ey+30>b3.by && ex<b3.bx+35 && ex>b3.bx-85){
+        b3.bState --;
+      }
+      if(ey+30>b4.by && ex<b4.bx+35 && ex>b4.bx-85){
+        b4.bState --;
       }
   
   }
@@ -796,6 +873,35 @@ class Enemy40 {
           pDead = true;
         }
       }
+      if(esy>620 && esx<b1.bx+35 && esx>b1.bx-35){
+        b1.bState --;
+        esx=-2000;
+      }
+      if(esy>620 && esx<b2.bx+35 && esx>b2.bx-35){
+        b2.bState --;
+        esx=-2000;
+      }
+      if(esy>620 && esx<b3.bx+35 && esx>b3.bx-35){
+        b3.bState --;
+        esx=-2000;
+      }
+      if(esy>620 && esx<b4.bx+35 && esx>b4.bx-35){
+        b4.bState --;
+        esx=-2000;
+      }
+      
+      if(ey+30>b1.by && ex<b1.bx+35 && ex>b1.bx-85){
+        b1.bState --;
+      }
+      if(ey+30>b2.by && ex<b2.bx+35 && ex>b2.bx-85){
+        b2.bState --;
+      }
+      if(ey+30>b3.by && ex<b3.bx+35 && ex>b3.bx-85){
+        b3.bState --;
+      }
+      if(ey+30>b4.by && ex<b4.bx+35 && ex>b4.bx-85){
+        b4.bState --;
+      }
   
   }
 }
@@ -854,3 +960,35 @@ class Enemy40 {
    }
   
   }
+  
+class Barriere{
+  int bx;
+  int by = 640;
+  int bState = 50;
+  Barriere(int bX){
+    bx = bX;
+  }
+  void update(){
+    if(bState<=50 && bState>40){
+      fill(0,255,0);
+    }else if(bState<= 40 && bState>30){
+      fill(64,191,0);
+    }else if(bState<=30 && bState>20){
+      fill(128,127,0);
+    }else if(bState<=20 && bState>10){
+      fill(192,63,0);
+    }else if(bState<=10){
+      fill(255,0,0);
+    }
+    rect(bx-35,by,70,40);
+    
+    if(sy<by+35 && sx<bx+35 && sx>bx-35 ){
+      sx = 2000;
+      bState --;
+    }
+    if(bState <= 0){
+      bx = 3000;
+    }
+      
+  }
+}
