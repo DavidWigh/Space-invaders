@@ -629,6 +629,12 @@ class Enemy10 {
       if(ey+30>b4.by && ex<b4.bx+35 && ex>b4.bx-85){
         b4.bState --;
       }
+      
+      if(ey>680 && ex<800 && ex>0){
+        ey = -1000;
+        lives = 0;
+        pDead = true;
+      }
   
   }
 
@@ -760,6 +766,12 @@ class Enemy20 {
       }
       if(ey+30>b4.by && ex<b4.bx+35 && ex>b4.bx-85){
         b4.bState --;
+      }
+      
+      if(ey>680 && ex<800 && ex>0){
+        ey = -1000;
+        lives = 0;
+        pDead = true;
       }
   
   }
@@ -901,6 +913,12 @@ class Enemy40 {
       }
       if(ey+30>b4.by && ex<b4.bx+35 && ex>b4.bx-85){
         b4.bState --;
+      }
+      
+      if(ey>680 && ex<800 && ex>0){
+        ey = -1000;
+        lives = 0;
+        pDead = true;
       }
   
   }
